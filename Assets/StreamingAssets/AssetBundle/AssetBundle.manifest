@@ -1,0 +1,34 @@
+ManifestFileVersion: 0
+CRC: 129217924
+AssetBundleManifest:
+  AssetBundleInfos:
+    Info_0:
+      Name: ui/panel/settingpanel.unity3d
+      Dependencies: {}
+    Info_1:
+      Name: ui/panel/uiblackcurtain.unity3d
+      Dependencies: {}
+    Info_2:
+      Name: scenes/scenecave.unity3d
+      Dependencies: {}
+    Info_3:
+      Name: ui/panel/uiselectpanel.unity3d
+      Dependencies: {}
+    Info_4:
+      Name: ui/panel/mainmenu.unity3d
+      Dependencies: {}
+    Info_5:
+      Name: ui/panel/uigameinfopanel.unity3d
+      Dependencies: {}
+    Info_6:
+      Name: ui/panel/menubutton.unity3d
+      Dependencies: {}
+    Info_7:
+      Name: prefabs/autocamera.unity3d
+      Dependencies: {}
+    Info_8:
+      Name: ui/panel/uideathpanel.unity3d
+      Dependencies: {}
+    Info_9:
+      Name: ui/panel/uidialogpanel.unity3d
+      Dependencies: {}
