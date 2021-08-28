@@ -41,7 +41,7 @@ namespace StarPlatinum.Base
             if (Application.isEditor)
             {
                 m_isLoading = true;
-                string loadPath = $"Assets/Config/{typeof(T).Name}.asset";
+                string loadPath = $"Assets/Resources/Config/{typeof(T).Name}.asset";
 
                 m_instance = AssetDatabase.LoadAssetAtPath<T>(loadPath);
                 if (m_instance == null) { Debug.LogError($"{loadPath} doesn`t exist {typeof(T).Name}"); return null; }
