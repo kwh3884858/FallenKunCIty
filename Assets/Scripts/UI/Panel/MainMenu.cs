@@ -17,24 +17,18 @@ public class MainMenu : UIPanel
 		EventTriggerListener.Get (transform.Find ("Setting")).OnPreHover (1.2f);
 		EventTriggerListener.Get (transform.Find ("About")).OnPreHover (1.2f);
 		EventTriggerListener.Get (transform.Find ("Quit")).OnPreHover (1.2f);
-
-
 	}
 
 	public override void PanelOpen ()
 	{
 		base.PanelOpen ();
-		SoundService.Instance ().PlayMusic ("MainMenuBgm", true);
 		LogicManager.Instance ().Notify ((int)SkylightStaticData.LogicType.MainMenuOpen);
-
-		//		Handheld.PlayFullScreenMovie ("mgop.mp4", Color.black, FullScreenMovieControlMode.CancelOnInput);
 	}
 
 	public override void PanelClose ()
 	{
 		base.PanelClose ();
 		LogicManager.Instance ().Notify ((int)SkylightStaticData.LogicType.MainMenuClose);
-
 	}
 
 
@@ -42,7 +36,6 @@ public class MainMenu : UIPanel
 	{
 		UIManager.Instance ().ClosePanel<MainMenu> ();
 		SoundService.Instance ().StopMusic ();
-
 
 		SoundService.Instance ().PlayMusic ("GameBgm", true);
 		SoundService.Instance ().PlayEffect ("WaterDrop", true, 0.3f);

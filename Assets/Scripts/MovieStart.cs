@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using Skylight;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Video;
@@ -52,6 +53,8 @@ public class MovieStart : MonoBehaviour
 	void EndReached (UnityEngine.Video.VideoPlayer vp = null)
 	{
 		GameObject.Find ("MainMenu/BlackMask").SetActive (false);
+		SoundService.Instance().PlayMusic("MainMenuBgm", true);
+
 		gameObject.SetActive (false);
 	}
 }
