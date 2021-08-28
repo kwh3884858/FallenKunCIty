@@ -9,20 +9,9 @@
 .svn/
 Documents/
 
-Assets/data
-Tools/release
-Tools/Heaven Gate/Windows/imgui.ini
-
-Assets/data.meta
-Assets/code.meta
-Assets/Resources.meta
-
-Assets/StreamingAssets/build_info
-Assets/StreamingAssets/build_info.meta
-
-Assets/AssetStoreTools*
-Assets/Resources/Storys/AutoSave~
-Config/
+Assets/StreamingAssets
+Assembly-CSharp*
+*.sln
 
 # Spine
 spine-unity.csproj
