@@ -1,0 +1,5 @@
+Path_Assets: \Assets
+Path_Data_To_World: \Scenes
+Path_Data_To_SceneLookupGenerator: \Tools
+Path_Code_To_File_SceneLookupTemplate: \Tools\SceneLookupTemplate.txt
+Scene_Lookup_OutputName: \SceneLookup.cs
