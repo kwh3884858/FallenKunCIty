@@ -35,7 +35,6 @@ namespace Skylight
 			string name = typeof (T).ToString ();
 			GameObject uiObject;
 			if (!mAllScenes.TryGetValue (name, out uiObject)) {
-				Debug.Log ("Poruduce new scene");
 				string perfbName = "Scenes/" + typeof (T).ToString ();
 				Debug.Log ("Loaded Perfab : " + perfbName);
 				GameObject perfb = AssetsManager.LoadPrefabs<GameObject> (perfbName);

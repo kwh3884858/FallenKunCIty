@@ -15,11 +15,9 @@ namespace Skylight
 			AddGameObject<LogicManager> ();
 			AddGameObject<CameraService> ();
 
-
 			AddGameObject<PollerService> ();
 			AddGameObject<SceneManager> ();
 			AddGameObject<SoundService> (); 			AddGameObject<UIManager> ();
-
 
 			LogicManager.Instance ().LogicStart ((int)SkylightStaticData.LogicType.PanelStart);
 		}
@@ -27,13 +25,6 @@ namespace Skylight
 		// Update is called once per frame
 		void Update ()
 		{
-
-		}
-
-
-		public void AddSystemManger ()
-		{
-
 
 		}
 	}
