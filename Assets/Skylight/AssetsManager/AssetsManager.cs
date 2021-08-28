@@ -121,57 +121,66 @@ namespace Skylight
 
 		public static T LoadPrefabs<T> (string path) where T : UnityEngine.Object
 		{
-#if UNITY_EDITOR
-			//string strName = "Assets/Prefabs/" + path + ".prefab";
-			//T go = AssetDatabase.LoadAssetAtPath<T> (strName);
-			//			Debug.Log (path);
-			path = path.ToLower ();
-			T go = AssetBundleLoad.LoadGameObject (path) as T;
-			//string strName = "Assets/" + path + ".prefab";
-			//T go = AssetDatabase.LoadAssetAtPath<T> (strName);
+			if (Application.isEditor)
+			{
+				//string strName = "Assets/Prefabs/" + path + ".prefab";
+				//T go = AssetDatabase.LoadAssetAtPath<T> (strName);
+				//			Debug.Log (path);
+				path = path.ToLower();
+				T go = AssetBundleLoad.LoadGameObject(path) as T;
+				//string strName = "Assets/" + path + ".prefab";
+				//T go = AssetDatabase.LoadAssetAtPath<T> (strName);
 
-			return go;
-#else
-			//string strName = ASSETBUNDLE_PATH + path;
-            //Debug.Log(strName);
-			//GameObject.Find ("Console").GetComponent <Text>().text += "\n" + strName;
-			path = path.ToLower ();
-			T go = AssetBundleLoad.LoadGameObject (path) as T;
-            return go;
-#endif
+				return go;
+			}
+			else
+			{
+				//string strName = ASSETBUNDLE_PATH + path;
+				//Debug.Log(strName);
+				//GameObject.Find ("Console").GetComponent <Text>().text += "\n" + strName;
+				path = path.ToLower();
+				T go = AssetBundleLoad.LoadGameObject(path) as T;
+				return go;
+			}
 		}
 
 		public static T LoadAnimationController<T> (string path) where T : UnityEngine.Object
 		{
-#if UNITY_EDITOR
-			string strName = "Assets/Prefabs/" + path + ".prefab";
-			T go = AssetDatabase.LoadAssetAtPath<T> (strName);
-			return go;
-#else
-			string strName = ASSETBUNDLE_PATH + path;
-            Debug.Log(strName);
-            AssetBundle bundle = AssetBundle.LoadFromFile(strName);
-            T go = bundle.LoadAllAssets<T>()[0];
-            return go;
-#endif
+			if (Application.isEditor)
+			{
+				string strName = "Assets/Prefabs/" + path + ".prefab";
+				T go = AssetDatabase.LoadAssetAtPath<T>(strName);
+				return go;
+			}
+			else
+			{
+				string strName = ASSETBUNDLE_PATH + path;
+				Debug.Log(strName);
+				AssetBundle bundle = AssetBundle.LoadFromFile(strName);
+				T go = bundle.LoadAllAssets<T>()[0];
+				return go;
+			}
 		}
 
 		public static T Load<T> (string path) where T : UnityEngine.Object
 		{
-#if UNITY_EDITOR
-			//string strName = "Assets/" + path;
-			//T go = AssetDatabase.LoadAssetAtPath<T> (strName);
-			T go = Resources.Load<T> (path) as T;
+			if (Application.isEditor)
+			{
+				//string strName = "Assets/" + path;
+				//T go = AssetDatabase.LoadAssetAtPath<T> (strName);
+				T go = Resources.Load<T> (path) as T;
 			return go;
-#else
+			}
+			else
+			{
 
-			//string strName = ASSETBUNDLE_PATH + path;
-			//Console.Log(path);
-			T go = Resources.Load (path, typeof(T)) as T;
+				//string strName = ASSETBUNDLE_PATH + path;
+				//Console.Log(path);
+				T go = Resources.Load (path, typeof(T)) as T;
 			//AssetBundle bundle = AssetBundle.LoadFromFile(strName);
 			//T go = bundle.LoadAllAssets<T>()[0];
 			return go;
-#endif
+			}
 		}
 
 
