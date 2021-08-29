@@ -22,7 +22,7 @@ public class PlayerMove : MonoBehaviour
 
     public float jumpBufferTime = 0.1f;         //跳跃缓冲时间
     private bool jumpBuffer = false;
-    [HideInInspector]
+
     public bool isJumping = false;
 
     public bool canDoubleJump;
@@ -32,13 +32,13 @@ public class PlayerMove : MonoBehaviour
     private float gravity;
     private float maxJumpVelocity;
     private float minJumpVelocity;
-    [HideInInspector]
+
     public Vector3 velocity;
     private float velocityXSmoothing;
 
     private Controller2D controller;
 
-    private Vector2 directionalInput;
+    public Vector2 directionalInput;
 
     private void Start()
     {
