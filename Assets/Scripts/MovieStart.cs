@@ -41,7 +41,6 @@ public class MovieStart : MonoBehaviour
 	// Update is called once per frame
 	void Update ()
 	{
-		Debug.Log (videoPlayer.frame);
 		if (videoPlayer.frame == 0) {
 			videoPlayer.Play ();
 		}
