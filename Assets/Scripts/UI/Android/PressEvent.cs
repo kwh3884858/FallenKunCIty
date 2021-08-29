@@ -9,7 +9,7 @@ public class PressEvent : MonoBehaviour, IPointerClickHandler, IPointerDownHandl
     public InputSystem.SkillType skillType;
     private SkillController m_Skill;
     private Image m_Image;
-    private bool flag = true;
+    //private bool flag = true;
 
     public void OnPointerDown(PointerEventData eventData)
     {

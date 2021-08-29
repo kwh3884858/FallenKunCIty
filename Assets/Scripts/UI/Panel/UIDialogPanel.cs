@@ -256,12 +256,12 @@ public class UIDialogPanel : UIPanel
 		m_logContent.text += character + ":" + word + "\n";
 	}
 
-	private bool isSelected = false;
+	//private bool isSelected = false;
 
 
 	void CheckCallback ()
 	{
-		UIBlackCurtain blackCurtain;
+		//UIBlackCurtain blackCurtain;
 
 
 		//switch (DialogPlayer.m_storyName) {

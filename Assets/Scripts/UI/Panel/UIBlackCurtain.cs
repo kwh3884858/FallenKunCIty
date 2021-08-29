@@ -11,7 +11,7 @@ public class UIBlackCurtain : Skylight.UIPanel
 	private Color BlackColor = new Color (0, 0, 0, 255);
 	private Color AlphaColor = new Color (0, 0, 0, 0);
 
-	private float time = 1.0f;
+	//private float time = 1.0f;
 	//TweenCallback callback = null;
 	// Use this for initialization
 

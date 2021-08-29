@@ -172,7 +172,6 @@ public class Player : MonoBehaviour {
         if (collider2D == null)
             return false;
         RaycastHit2D[] hits = collider2D.GetHorizontalCollisions(interactLayer);   //获取水平碰撞体
-        int i = 1;
         foreach (RaycastHit2D hit in hits)
         {
             if (!hit)
