@@ -10,6 +10,7 @@
 Documents/
 
 Assets/StreamingAssets
+Assets/StreamingAssets.meta
 Assembly-CSharp*
 *.sln
 
