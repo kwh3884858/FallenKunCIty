@@ -40,6 +40,7 @@ namespace StarPlatinum.Base
 
             if (Application.isEditor)
             {
+#if UNITY_EDITOR
                 m_isLoading = true;
                 string loadPath = $"Assets/Resources/Config/{typeof(T).Name}.asset";
 
@@ -49,6 +50,9 @@ namespace StarPlatinum.Base
                 Debug.Log($"======Resource加载完成:{typeof(T).Name}, path:{loadPath}, config:{m_instance}=====");
                 m_isLoading = false;
                 return m_instance;
+#else
+                return null;
+#endif
             }
             else
             {
