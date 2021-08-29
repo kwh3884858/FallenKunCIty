@@ -133,6 +133,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: LegoGameDesignerGym
       objectReference: {fileID: 0}
+    - target: {fileID: 5948908866916165638, guid: 10923dfc70caa4643bb7b52d9617ea2f,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6362233771946431116, guid: 10923dfc70caa4643bb7b52d9617ea2f,
         type: 3}
       propertyPath: m_LocalPosition.x
