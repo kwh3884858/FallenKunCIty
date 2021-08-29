@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using Skylight;
+using Config.GameRoot;
 
 public class MainMenu : UIPanel
 {
@@ -39,7 +40,25 @@ public class MainMenu : UIPanel
 
 		SoundService.Instance ().PlayMusic ("GameBgm", true);
 		SoundService.Instance ().PlayEffect ("WaterDrop", true, 0.3f);
-		SceneManager.Instance ().ShowScene<SceneCave> ();
+		SceneLookupEnum startScene = ConfigRoot.Instance.StartScene;
+        switch (startScene)
+        {
+            case SceneLookupEnum.GameRoot:
+                break;
+            case SceneLookupEnum.LegoGameDesignerGym:
+				SceneManager.Instance().ShowScene<LegoGameDesignerGym>();
+				break;
+            case SceneLookupEnum.LegoGhostCat:
+                break;
+            case SceneLookupEnum.SampleScene:
+                break;
+            case SceneLookupEnum.SceneCave:
+				SceneManager.Instance().ShowScene<SceneCave>();
+				break;
+            default:
+                break;
+        }
+
 	}
 
 	void GameSetting ()

@@ -16,6 +16,11 @@ public class ToolBoxEditorWindow : EditorWindow
 	SceneLookupEnum m_enumStartScene;
 	SceneLookupEnum m_enumStartSceneInConfig;
 
+	ToolBoxEditorWindow()
+    {
+		this.titleContent =new GUIContent("Tool Box");
+    }
+
 	// Add menu named "My Window" to the Window menu
 	[MenuItem("Tools/Tool Box %l")]
 	static void Init()
@@ -36,7 +41,7 @@ public class ToolBoxEditorWindow : EditorWindow
 		_scrollPos = GUI.BeginScrollView(
 			new Rect(0, 0, position.width, position.height),
 			_scrollPos,
-			new Rect(0, 0, 400, 800)
+			new Rect(0, 0, 400, 400)
 		);
 		GUILayout.Label("Start From This Scene", EditorStyles.boldLabel);
 
@@ -51,6 +56,26 @@ public class ToolBoxEditorWindow : EditorWindow
 		}
 
 		GUILayout.Space(20);
+		if (GUILayout.Button("Start Game"))
+		{
+			if (EditorBuildSettings.scenes.Length == 0)
+			{
+				Debug.LogWarning("The scene build list is empty. Can't play from first scene.");
+				return;
+			}
+
+            if (Application.isEditor)
+            {
+				EditorSceneManager.OpenScene($"Assets/Scenes/{ SceneLookup.GetString(SceneLookupEnum.GameRoot) }.unity", OpenSceneMode.Single);
+				EditorApplication.isPlaying = true;
+			}
+			else
+            {
+				SceneManager.LoadScene(SceneLookup.GetString(SceneLookupEnum.GameRoot), LoadSceneMode.Single);
+			}
+		}
+
+		GUILayout.Space(20);
 		if (GUILayout.Button("Save to Config"))
 		{
 			ConfigRoot.Instance.StartScene = m_enumStartScene;
@@ -58,6 +83,7 @@ public class ToolBoxEditorWindow : EditorWindow
 			AssetDatabase.SaveAssets();
 			AssetDatabase.Refresh();
 		}
+
 
 		GUILayout.Label("Info", EditorStyles.boldLabel);
 
