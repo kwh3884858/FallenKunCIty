@@ -36,19 +36,19 @@ public class Controller2D : RaycastController
         collisions.moveAmountOld = moveAmount;
         playerInput = input;
 
-        if (moveAmount.x != 0)
+        if (Mathf.Abs( moveAmount.x ) > Mathf.Epsilon)
         {
             collisions.faceDir = (int)Mathf.Sign(moveAmount.x);
         }
 
-        if (moveAmount.y < 0)
+        if (moveAmount.y < -Mathf.Epsilon )
         {
             DescendSlope(ref moveAmount);
         }
 
         HorizontalCollisions(ref moveAmount);
 
-        if (moveAmount.y != 0)
+        if (Mathf.Abs(moveAmount.y) > Mathf.Epsilon)
         {
             VerticalCollisions(ref moveAmount);
         }
@@ -323,7 +323,7 @@ public class Controller2D : RaycastController
         collisions.fallingThroughPlatform = false;
     }
 
-
+    [System.Serializable]
     public struct CollisionInfo
     {
         public bool above, below;
