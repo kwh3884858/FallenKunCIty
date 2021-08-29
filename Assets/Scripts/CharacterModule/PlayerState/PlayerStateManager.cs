@@ -5,6 +5,8 @@ using UnityEngine;
 public class PlayerStateManager : MonoBehaviour {
 
 	private StateSystem m_StateSystem;
+	public string m_currentState;
+	public string m_lastState;
 
 	void Awake ()
 	{
@@ -23,12 +25,16 @@ public class PlayerStateManager : MonoBehaviour {
 	public void Update ()
 	{
 		m_StateSystem.CurrentState.ProcessTransition ();
+
+		m_currentState = m_StateSystem.CurrentStateID.ToString();
+		m_lastState = m_StateSystem.LastStateID.ToString();
 	}
 
-	public void FixedUpdate ()
+    public void LateUpdate()
 	{
 		m_StateSystem.CurrentState.FixedUpdate ();
 	}
+
 	public void InitStateSystem ()
 	{
 		PlayerIdleState idle = new PlayerIdleState(this.gameObject, this);
