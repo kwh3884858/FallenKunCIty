@@ -46,14 +46,30 @@ namespace Skylight
 		{
 			//获取选中文件
 			UnityEngine.Object [] SelectedAsset = Selection.GetFiltered (typeof (Object),
-								SelectionMode.Assets | SelectionMode.ExcludePrefab);
+								SelectionMode.Assets /*| SelectionMode.ExcludePrefab*/);
 			//此处添加需要命名的资源后缀名,注意大小写。
 			string [] Filtersuffix = { ".asset", ".prefab" };
 
 			if (SelectedAsset.Length != 1) return;
 			string fullPath = AssetsManager.PROJECT_PATH + AssetDatabase.GetAssetPath (SelectedAsset [0]);
 
-			SetAssetBundleName (fullPath, Filtersuffix);
+			foreach (string suffix in Filtersuffix)
+			{
+				if (fullPath.EndsWith(suffix))
+				{
+					string path = fullPath.Replace('\\', '/').Substring(AssetsManager.PROJECT_PATH.Length);
+					AssetImporter importer = AssetImporter.GetAtPath(path);
+					if (importer)
+					{
+						string name = path.Substring("Assets/".Length);
+						importer.assetBundleName = name.Substring(0, name.LastIndexOf('.')) + AssetsManager.SUFFIX;
+					}
+				}
+				else
+				{
+					Debug.Log(fullPath + " have a invalid suffix");
+				}
+			}
 		}
 
 		[MenuItem ("Assets/AssetBundles/SetAllAssetsBundleName")]

@@ -29,7 +29,7 @@ namespace Skylight
 			}
 		}
 
-		[MenuItem ("Assets/AssetBundles/BuildAssetBundles")]
+		[MenuItem ("Assets/AssetBundles/BuildAssetBundles %#&B")]
 		public static void BuildAllAssetBundles ()
 		{
 			string assetBundleDirectory = "Assets/StreamingAssets/AssetBundle/";
