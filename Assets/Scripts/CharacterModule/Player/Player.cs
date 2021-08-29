@@ -9,7 +9,6 @@ public class Player : MonoBehaviour {
 
 	private Animation m_anim;
 	private PlayerStateManager m_StateManager;
-    private Transform targetMark;
     private bool isHolding;
     [SerializeField]
     private bool isSliding;
@@ -224,19 +223,4 @@ public class Player : MonoBehaviour {
 		if (m_anim != null)
 			m_anim.CrossFade (clip);
 	}
-
-
-    public void setSoulTarget(Collider2D[] cols,int currentNo)
-    {
-        targetMark.GetComponent<SpriteRenderer>().enabled = true;
-        Vector3 targetPos = new Vector3(cols[currentNo].transform.position.x, cols[currentNo].GetComponent<Controller2D>().raycastOrigins.topLeft.y);
-        targetMark.position = targetPos +markOffset ;
-    }
-
-    public void ResetSoulTarget()
-    {
-        targetMark.GetComponent<SpriteRenderer>().enabled = false;
-        targetMark.position = transform.position+markOffset;
-    }
-
 }
