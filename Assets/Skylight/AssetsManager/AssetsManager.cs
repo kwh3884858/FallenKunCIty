@@ -123,17 +123,21 @@ namespace Skylight
 		{
 			if (Application.isEditor)
 			{
-				//string strName = "Assets/Prefabs/" + path + ".prefab";
-				//T go = AssetDatabase.LoadAssetAtPath<T> (strName);
-				//			Debug.Log (path);
-				//path = path.ToLower();
-				//T go = AssetBundleLoad.LoadGameObject(path) as T;
+                //string strName = "Assets/Prefabs/" + path + ".prefab";
+                //T go = AssetDatabase.LoadAssetAtPath<T> (strName);
+                //			Debug.Log (path);
+                //path = path.ToLower();
+                //T go = AssetBundleLoad.LoadGameObject(path) as T;
+#if UNITY_EDITOR
                 string strName = "Assets/" + path + ".prefab";
                 T go = AssetDatabase.LoadAssetAtPath<T>(strName);
-
+                
                 return go;
-			}
-			else
+#else
+                return null;
+#endif
+            }
+            else
 			{
 				//string strName = ASSETBUNDLE_PATH + path;
 				//Debug.Log(strName);
