@@ -6,13 +6,14 @@ public enum Transition
 {
     eTransiton_Null = 0, // Use this transition to represent a non-existing transition in your system
 
-    eTransiton_Object_Idle = 200,
-    eTransiton_Object_Run,
-    eTransiton_Object_Jump,
-	eTransiton_Object_Push,
+    eTransition_Object_Idle = 200,
+    eTransition_Object_Run,
+    eTransition_Object_Jump,
     eTransition_Object_Slid,
     eTransition_Object_Push,
 
+    eTransition_NPC_Idle = 400,
+    eTransition_NPC_Move,
 }
 public enum StateID
 {
@@ -24,6 +25,8 @@ public enum StateID
 	eStateID_Object_Slid,
     eStateID_Object_Push,
 
+    eStateID_NPC_Idle = 400,
+    eStateID_NPC_Move,
 }
 
 

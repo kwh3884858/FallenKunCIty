@@ -30,7 +30,7 @@ public class PlayerRunState : PlayerState
         }
         if (Mathf.Abs(m_playerMove.velocity.x) < 0.03f)
         {
-            m_StateManager.SetTransition(Transition.eTransiton_Object_Idle);
+            m_StateManager.SetTransition(Transition.eTransition_Object_Idle);
         }
         if (m_playerMove.isJumping)
         {
@@ -43,7 +43,7 @@ public class PlayerRunState : PlayerState
                 m_Animator.ChangeAnimation(AnimatorControl.AnimationType.JumpUp);
             }
 
-            m_StateManager.SetTransition(Transition.eTransiton_Object_Jump);
+            m_StateManager.SetTransition(Transition.eTransition_Object_Jump);
         }
     }
 

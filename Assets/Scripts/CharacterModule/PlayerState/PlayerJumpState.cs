@@ -43,11 +43,11 @@ public class PlayerJumpState : PlayerState {
         { 
             if (Mathf.Abs(m_playerMove.velocity.x) < 0.03f)
             {
-                m_StateManager.SetTransition(Transition.eTransiton_Object_Idle);
+                m_StateManager.SetTransition(Transition.eTransition_Object_Idle);
             }
             else
             {
-                m_StateManager.SetTransition(Transition.eTransiton_Object_Run);
+                m_StateManager.SetTransition(Transition.eTransition_Object_Run);
             }
         }
     }

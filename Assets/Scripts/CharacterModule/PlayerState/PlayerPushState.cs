@@ -47,12 +47,12 @@ public class PlayerPushState : PlayerState
             {
                 m_Animator.ChangeAnimation(AnimatorControl.AnimationType.JumpUp);
             }
-            m_StateManager.SetTransition(Transition.eTransiton_Object_Jump);
+            m_StateManager.SetTransition(Transition.eTransition_Object_Jump);
         }
         if (InputSystem.getInstance().hand == false)
         {
             m_Animator.ChangeAnimation(AnimatorControl.AnimationType.Idle);
-            m_StateManager.SetTransition(Transition.eTransiton_Object_Idle);
+            m_StateManager.SetTransition(Transition.eTransition_Object_Idle);
         }
     }
 
