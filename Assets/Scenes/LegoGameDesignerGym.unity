@@ -121,6 +121,12 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!61 &1244257250 stripped
+BoxCollider2D:
+  m_CorrespondingSourceObject: {fileID: 1244257250, guid: 10923dfc70caa4643bb7b52d9617ea2f,
+    type: 3}
+  m_PrefabInstance: {fileID: 3002151469834380874}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &3002151469834380874
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -128,6 +134,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 507896372, guid: 10923dfc70caa4643bb7b52d9617ea2f, type: 3}
+      propertyPath: coll
+      value: 
+      objectReference: {fileID: 1244257250}
     - target: {fileID: 5223467008312910927, guid: 10923dfc70caa4643bb7b52d9617ea2f,
         type: 3}
       propertyPath: m_Name
@@ -141,17 +151,17 @@ PrefabInstance:
     - target: {fileID: 6362233771946431116, guid: 10923dfc70caa4643bb7b52d9617ea2f,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 345.60553
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6362233771946431116, guid: 10923dfc70caa4643bb7b52d9617ea2f,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 217.27747
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6362233771946431116, guid: 10923dfc70caa4643bb7b52d9617ea2f,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 202.49814
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6362233771946431116, guid: 10923dfc70caa4643bb7b52d9617ea2f,
         type: 3}
