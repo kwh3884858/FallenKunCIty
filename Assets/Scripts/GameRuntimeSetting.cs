@@ -1,8 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
-public class GameRuntimeSetting : MonoBehaviour
+using Skylight;
+public class GameRuntimeSetting : GameModule<GameRuntimeSetting>
 {
     // Start is called before the first frame update
     void Start()
@@ -15,4 +15,22 @@ public class GameRuntimeSetting : MonoBehaviour
     {
         
     }
+
+    public ELanguage GetCurrentLanguage ()
+	{
+        return m_language;
+	}
+
+    public void ChangeLanguage(ELanguage language)
+	{
+		if (language != m_language) {
+            m_language = language;
+		}
+	}
+    public enum ELanguage
+	{
+        Chinese,
+        Japanese,
+	}
+    private ELanguage m_language = ELanguage.Chinese;
 }
