@@ -124,7 +124,8 @@ public class ActionEvent : MonoBehaviour
                 }
 
                 break;
-            case "interact": {
+            case "interact":
+                {
                     Assert.IsTrue (command.Length == 3);
 
                     string who = command [1];
@@ -132,8 +133,38 @@ public class ActionEvent : MonoBehaviour
                 }
 
                 break;
-            case "talk": {
+            case "talk":
+                {
                     Assert.IsTrue (command.Length > 3);
+
+                    GameRuntimeSetting.ELanguage language = GameRuntimeSetting.Instance ().GetCurrentLanguage ();
+
+                    string who ="";
+                    string saySomething ="";
+					for (int i = 1; i < command.Length; i++) {
+                        switch (language) {
+                        case GameRuntimeSetting.ELanguage.Chinese: {
+                                if (command[i] == "cn") {
+                                    who = command [i + 1];
+                                    saySomething = command [i + 2];
+                                }
+                            }
+                            break;
+                        case GameRuntimeSetting.ELanguage.Japanese: {
+                                if (command[i] == "jp") {
+                                    who = command [i + 1];
+                                    saySomething = command [i + 2];
+                                }
+                            }
+                            break;
+                        default:
+                            break;
+                        }
+                    }
+
+                    Assert.IsTrue (who.Length > 0);
+                    Assert.IsTrue (saySomething.Length > 0);
+
                 }
 
                 break;
@@ -144,7 +175,7 @@ public class ActionEvent : MonoBehaviour
                 break;
             default:
                 break;
-            }
-        }
-    }
+			}
+		}
+	}
 }
