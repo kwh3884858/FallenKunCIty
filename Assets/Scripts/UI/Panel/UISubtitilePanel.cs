@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Skylight;
 using UnityEngine;
+using UnityEngine.Assertions;
 
 public class UISubtitilePanel : UIPanel
 {
@@ -11,8 +12,11 @@ public class UISubtitilePanel : UIPanel
 	{
 		base.PanelInit ();
 
-		m_originalSubtitile = transform.Find ("Content/Subtitile").gameObject;
-		StarPlatinum.EventManager.EventManager.Instance.AddEventListener<TalkEvent> (OnTalkEvent);
+        m_subtitileContent = transform.Find("Content").gameObject;
+        m_originalSubtitile = transform.Find("Content/Subtitile").gameObject;
+        m_originalSubtitile.SetActive(false);
+
+        StarPlatinum.EventManager.EventManager.Instance.AddEventListener<TalkEvent> (OnTalkEvent);
 	}
 
 	private void OnTalkEvent (object sender, TalkEvent e)
@@ -33,12 +37,16 @@ public class UISubtitilePanel : UIPanel
 	public void AddSubtitile (string content, float delayTime)
 	{
 		GameObject subtitile = Instantiate (m_originalSubtitile);
-		subtitile.name = content;
-		subtitile.transform.SetParent (this.transform);
+        subtitile.SetActive(true);
+        subtitile.name = content;
+        subtitile.GetComponent<RectTransform>().localScale = new Vector3(1, 1, 1); //I don`t know why the scale will change after instantiate
+        subtitile.transform.SetParent (m_subtitileContent.transform);
 		SubtitleController controller = subtitile.GetComponent<SubtitleController> ();
+        Assert.IsNotNull(controller, "Check whether the original subtitle object is lack of Component");
 		controller.StartSubtitile (content, delayTime);
 	}
 
-	GameObject m_originalSubtitile;
+	GameObject m_subtitileContent;
+    GameObject m_originalSubtitile;
 
 }

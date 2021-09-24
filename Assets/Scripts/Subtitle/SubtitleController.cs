@@ -18,7 +18,7 @@ public class SubtitleController : MonoBehaviour
             m_countDown -= Time.deltaTime;
 			if (m_countDown < 0) {
                 m_isStartCountDown = false;
-                Destroy (this);
+                Destroy (gameObject);
 			}
 		}
     }
@@ -30,6 +30,9 @@ public class SubtitleController : MonoBehaviour
         m_isStartCountDown = true;
     }
 
-    private float m_countDown = 100.0f;
+    [SerializeField]
     private bool m_isStartCountDown = false;
+    [SerializeField]
+    private float m_countDown = 100.0f;
+
 }

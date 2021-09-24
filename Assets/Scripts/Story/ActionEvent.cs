@@ -15,7 +15,9 @@ public class TalkEvent : EventArgs
 }
 public class ActionEvent : MonoBehaviour
 {
-    private string m_id;
+    [SerializeField]
+    private string m_fileName;
+
     private bool m_isLoaded = false;
     private int m_currentIndex = 0;
     public string[][] m_ArrayData;
