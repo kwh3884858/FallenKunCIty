@@ -5,7 +5,13 @@ using System.Text;
 using UnityEngine;
 using UnityEngine.Assertions;
 using UnityEngine.Events;
+using Skylight;
+using System;
 
+public class TalkEvent : EventArgs
+{
+    public string m_content;
+}
 public class ActionEvent : MonoBehaviour
 {
     private string m_id;
@@ -102,80 +108,92 @@ public class ActionEvent : MonoBehaviour
         if (!m_isLoaded) {
             return;
         }
+		if (IsFinished())
+        {
+            return;
+		}
+        else
+        {
+            PlayStoryByLine (m_currentIndex);
+            m_currentIndex++;
+        }
+	}
 
-        foreach (var command in m_ArrayData) {
-            switch (command [0]) {
+	private void PlayStoryByLine (int m_currentIndex)
+	{
+        string command = m_ArrayData [m_currentIndex];
+
+            switch (command [0])
+            {
             case "move": {
-                    Assert.IsTrue (command.Length == 3);
-                    string who = command [1];
-                    string where = command [2];
+            Assert.IsTrue (command.Length == 3);
+            string who = command [1];
+            string where = command [2];
 
-                    EActor actor = GetActorByName (who);
-                    ELocation location = GetLocationByName (where);
+            EActor actor = GetActorByName (who);
+            ELocation location = GetLocationByName (where);
 
-                    GameObject actorGO = StoryManager.Instance ().GetActorGameobjectByEActor (actor);
-                    GameObject locationGO = StoryManager.Instance ().GetLocationGameobjectByELocation (location);
+            GameObject actorGO = StoryManager.Instance ().GetActorGameobjectByEActor (actor);
+            GameObject locationGO = StoryManager.Instance ().GetLocationGameobjectByELocation (location);
 
-                    NPCController controller = actorGO.GetComponent<NPCController> ();
-                    Assert.IsNotNull (controller);
-					if (controller) {
-                        controller. MoveToActionPoint (locationGO);
-                    }
-                }
+            NPCController controller = actorGO.GetComponent<NPCController> ();
+            Assert.IsNotNull (controller);
+            if (controller) {
+                controller.MoveToActionPoint (locationGO);
+            }
+        }
 
-                break;
-            case "interact":
-                {
-                    Assert.IsTrue (command.Length == 3);
+        break;
+    case "interact": {
+            Assert.IsTrue (command.Length == 3);
 
-                    string who = command [1];
-                    string what = command [2];
-                }
+            string who = command [1];
+            string what = command [2];
+        }
 
-                break;
-            case "talk":
-                {
-                    Assert.IsTrue (command.Length > 3);
+        break;
+    case "talk": {
+            Assert.IsTrue (command.Length > 3);
 
-                    GameRuntimeSetting.ELanguage language = GameRuntimeSetting.Instance ().GetCurrentLanguage ();
+            GameRuntimeSetting.ELanguage language = GameRuntimeSetting.Instance ().GetCurrentLanguage ();
 
-                    string who ="";
-                    string saySomething ="";
-					for (int i = 1; i < command.Length; i++) {
-                        switch (language) {
-                        case GameRuntimeSetting.ELanguage.Chinese: {
-                                if (command[i] == "cn") {
-                                    who = command [i + 1];
-                                    saySomething = command [i + 2];
-                                }
-                            }
-                            break;
-                        case GameRuntimeSetting.ELanguage.Japanese: {
-                                if (command[i] == "jp") {
-                                    who = command [i + 1];
-                                    saySomething = command [i + 2];
-                                }
-                            }
-                            break;
-                        default:
-                            break;
+            string who = "";
+            string saySomething = "";
+            for (int i = 1; i < command.Length; i++) {
+                switch (language) {
+                case GameRuntimeSetting.ELanguage.Chinese: {
+                        if (command [i] == "cn") {
+                            who = command [i + 1];
+                            saySomething = command [i + 2];
                         }
                     }
-
-                    Assert.IsTrue (who.Length > 0);
-                    Assert.IsTrue (saySomething.Length > 0);
-
+                    break;
+                case GameRuntimeSetting.ELanguage.Japanese: {
+                        if (command [i] == "jp") {
+                            who = command [i + 1];
+                            saySomething = command [i + 2];
+                        }
+                    }
+                    break;
+                default:
+                    break;
                 }
+            }
 
-                break;
-            case "talkKey": {
-                    Assert.IsTrue (command.Length > 3);
-                }
+            Assert.IsTrue (who.Length > 0);
+            Assert.IsTrue (saySomething.Length > 0);
+            string content = $"{who}: {saySomething}";
+            StarPlatinum.EventManager.EventManager.Instance.SendEvent (new TalkEvent { m_content = content });
+        }
 
-                break;
-            default:
-                break;
-			}
-		}
-	}
+        break;
+    case "talkKey": {
+            Assert.IsTrue (command.Length > 3);
+        }
+
+        break;
+    default:
+        break;
+    }
+    }
 }
