@@ -11,10 +11,14 @@ public class LegoGameDesignerGym : BaseScene
 
 	public override void SceneShow()
 	{
+		UIManager.Instance ().ShowPanel<UISubtitilePanel> ();
+
 	}
 
 	public override void SceneClose()
 	{
+		UIManager.Instance ().ClosePanel<UISubtitilePanel> ();
+
 	}
 
 }
