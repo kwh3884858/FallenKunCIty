@@ -25,11 +25,6 @@ public enum ELocation
 
 public class StoryManager : MonoSingleton<StoryManager>
 {
-    public class ActionEvent : MonoBehaviour
-    {
-
-    }
-
     public class StoryTrack
     {
         public void Update()
