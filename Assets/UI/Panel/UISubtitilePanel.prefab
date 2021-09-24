@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 6310973803695902817}
   - component: {fileID: 5913572731170696881}
   m_Layer: 5
-  m_Name: Panel
+  m_Name: Content
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -35,7 +35,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: 0, y: 32.449}
+  m_AnchoredPosition: {x: 0, y: 32.44922}
   m_SizeDelta: {x: 507.40558, y: 185.1369}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &6310973803695902817
@@ -83,7 +83,7 @@ GameObject:
   - component: {fileID: 8883936610922889195}
   - component: {fileID: 3676097957530160312}
   m_Layer: 5
-  m_Name: Content
+  m_Name: Subtitile
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
