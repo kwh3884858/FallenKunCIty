@@ -23,13 +23,12 @@ public class SubtitleController : MonoBehaviour
 		}
     }
 
-    public void StartSubtitile(string content)
+    public void StartSubtitile(string content, float delayTime)
 	{
-        m_countDown = m_delayPerWord * content.Length;
+        m_countDown = delayTime;
         GetComponent<Text> ().text = content;
         m_isStartCountDown = true;
     }
-    public float m_delayPerWord = 0.5f;
 
     private float m_countDown = 100.0f;
     private bool m_isStartCountDown = false;

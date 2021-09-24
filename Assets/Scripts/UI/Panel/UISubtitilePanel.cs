@@ -17,7 +17,7 @@ public class UISubtitilePanel : UIPanel
 
 	private void OnTalkEvent (object sender, TalkEvent e)
 	{
-		AddSubtitile (e.m_content);
+		AddSubtitile (e.m_content, e.m_delayTime);
 	}
 
 	public override void PanelOpen ()
@@ -30,13 +30,13 @@ public class UISubtitilePanel : UIPanel
 		base.PanelClose ();
 	}
 
-	public void AddSubtitile (string content)
+	public void AddSubtitile (string content, float delayTime)
 	{
 		GameObject subtitile = Instantiate (m_originalSubtitile);
 		subtitile.name = content;
 		subtitile.transform.SetParent (this.transform);
 		SubtitleController controller = subtitile.GetComponent<SubtitleController> ();
-		controller.StartSubtitile (content);
+		controller.StartSubtitile (content, delayTime);
 	}
 
 	GameObject m_originalSubtitile;
