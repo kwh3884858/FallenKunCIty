@@ -61,7 +61,7 @@ namespace Skylight
 		public bool CameraClose (LogicManager.LogicData vars = null)
 		{
 			Camera [] cameras = Camera.allCameras;
-			Debug.Log ("Camera Length:" + cameras.Length);
+			//Debug.Log ("Camera Length:" + cameras.Length);
 			for (int i = 0; i < cameras.Length; i++) {
 				Debug.Log ("Camera" + i + " name: " + cameras [i].name);
 				//if (cameras [i].name != "AutoCamera") {
