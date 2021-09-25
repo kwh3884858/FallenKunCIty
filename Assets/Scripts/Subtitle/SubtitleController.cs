@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Assertions;
 using UnityEngine.UI;
 
 public class SubtitleController : MonoBehaviour
@@ -16,20 +17,35 @@ public class SubtitleController : MonoBehaviour
     {
 		if (m_isStartCountDown) {
             m_countDown -= Time.deltaTime;
+
 			if (m_countDown < 0) {
                 m_isStartCountDown = false;
-                Destroy (gameObject);
+                Destroy(gameObject);
 			}
 		}
     }
 
-    public void StartSubtitile(string content, float delayTime)
+    public void StartSubtitile(string who, string content, float delayTime, bool isKeyTalk)
 	{
         m_countDown = delayTime;
-        GetComponent<Text> ().text = content;
+        Transform nameGO = transform.Find("Name");
+        Transform contentGO = transform.Find("Content");
+
+        Assert.IsNotNull(nameGO);
+        Assert.IsNotNull(contentGO);
+
+        nameGO.GetComponent<Text> ().text = who;
+        contentGO.GetComponent<Text>().text = content;
+
+        if (isKeyTalk)
+        {
+            contentGO.GetComponent<Text>().color = Color.red;
+        }
+
         m_isStartCountDown = true;
     }
 
+    public float m_crossFadeDuration = 0.45f;
     [SerializeField]
     private bool m_isStartCountDown = false;
     [SerializeField]

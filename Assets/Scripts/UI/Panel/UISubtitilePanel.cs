@@ -13,7 +13,7 @@ public class UISubtitilePanel : UIPanel
 		base.PanelInit ();
 
         m_subtitileContent = transform.Find("Content").gameObject;
-        m_originalSubtitile = transform.Find("Content/Subtitile").gameObject;
+        m_originalSubtitile = transform.Find("Content/Subtitle").gameObject;
         m_originalSubtitile.SetActive(false);
 
         StarPlatinum.EventManager.EventManager.Instance.AddEventListener<TalkEvent> (OnTalkEvent);
@@ -21,7 +21,7 @@ public class UISubtitilePanel : UIPanel
 
 	private void OnTalkEvent (object sender, TalkEvent e)
 	{
-		AddSubtitile (e.m_content, e.m_delayTime);
+		AddSubtitile (e.m_who, e.m_content, e.m_delayTime, e.m_isKeyTalk);
 	}
 
 	public override void PanelOpen ()
@@ -34,7 +34,7 @@ public class UISubtitilePanel : UIPanel
 		base.PanelClose ();
 	}
 
-	public void AddSubtitile (string content, float delayTime)
+	public void AddSubtitile (string who, string content, float delayTime,bool isKeyTalk)
 	{
 		GameObject subtitile = Instantiate (m_originalSubtitile);
         subtitile.SetActive(true);
@@ -43,7 +43,7 @@ public class UISubtitilePanel : UIPanel
         subtitile.transform.SetParent (m_subtitileContent.transform);
 		SubtitleController controller = subtitile.GetComponent<SubtitleController> ();
         Assert.IsNotNull(controller, "Check whether the original subtitle object is lack of Component");
-		controller.StartSubtitile (content, delayTime);
+		controller.StartSubtitile (who, content, delayTime, isKeyTalk);
 	}
 
 	GameObject m_subtitileContent;

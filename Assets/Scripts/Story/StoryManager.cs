@@ -38,7 +38,7 @@ public class StoryManager : MonoSingleton<StoryManager>
             {
                 if (!item.IsFinished())
                 {
-                    item.Update();
+                    item.InternalUpdate();
                 }
             }
         }

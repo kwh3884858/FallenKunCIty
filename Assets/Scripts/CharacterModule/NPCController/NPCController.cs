@@ -12,8 +12,8 @@ public class NPCController : MonoBehaviour
         if (m_currentActionPoint && !m_isMoveing)
         {
             m_isMoveing = true;
-            float duration = (transform.position.x - m_currentActionPoint.transform.position.x) / m_velcoity;
-            transform.DOLocalMoveX(m_currentActionPoint.transform.position.x, duration).OnComplete(OnMoveComplete);
+            float duration = GetDurationTime(m_currentActionPoint);
+            transform.DOMoveX(m_currentActionPoint.transform.position.x, duration).OnComplete(OnMoveComplete);
         }
     }
 
@@ -23,21 +23,27 @@ public class NPCController : MonoBehaviour
         m_currentActionPoint = null;
     }
 
-    public void MoveToActionPoint(GameObject actionPoint)
+    private float GetDurationTime(GameObject destination)
+    {
+        return Mathf.Abs(transform.position.x - destination.transform.position.x) / m_velcoity;
+    }
+
+    public float MoveToActionPoint(GameObject actionPoint)
     {
         Assert.IsNull(m_currentActionPoint, "Action Point is only accept one.");
         Assert.IsFalse(m_isMoveing, "The Game object can not be interrupt.");
 
-        if (m_currentActionPoint || m_isMoveing == false)
+        if (m_currentActionPoint || m_isMoveing)
         {
-            return;
+            return -1;
         }
 
         m_currentActionPoint = actionPoint;
+        return GetDurationTime(actionPoint);
     }
 
     [Min(0)]
-    public float m_velcoity;
+    public float m_velcoity = 0.5f;
     [Header("Private Values")]
     [SerializeField]
     private bool m_isMoveing = false;

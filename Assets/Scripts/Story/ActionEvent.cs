@@ -10,17 +10,13 @@ using System;
 
 public class TalkEvent : EventArgs
 {
+    public string m_who;
     public string m_content;
     public float m_delayTime;
+    public bool m_isKeyTalk;
 }
 public class ActionEvent : MonoBehaviour
 {
-    [SerializeField]
-    private string m_fileName;
-
-    private bool m_isLoaded = false;
-    private int m_currentIndex = 0;
-    public string[][] m_ArrayData;
 
     ActionEvent()
     {
@@ -35,6 +31,31 @@ public class ActionEvent : MonoBehaviour
     {
         m_isLoaded = true;
     }
+
+    public bool IsFinished()
+    {
+        return m_isLoaded && m_currentIndex == m_ArrayData.Length;
+    }
+
+    public void InternalUpdate()
+    {
+        if (!m_isLoaded)
+        {
+            return;
+        }
+        if (IsFinished())
+        {
+            return;
+        }
+        if (IsRunning())
+        {
+            return;
+        }
+
+        PlayStoryByLine(m_currentIndex);
+        m_currentIndex++;
+    }
+
 
     private EActor GetActorByName(string name)
     {
@@ -68,7 +89,7 @@ public class ActionEvent : MonoBehaviour
         return ELocation.Null;
     }
 
-    IEnumerator LoadCSV(string fileName, UnityAction CompleteAction)
+    private IEnumerator LoadCSV(string fileName, UnityAction CompleteAction)
     {
         string sPath = Application.streamingAssetsPath + "/" + fileName;
         Debug.Log("sPath:" + sPath);
@@ -77,7 +98,7 @@ public class ActionEvent : MonoBehaviour
         {
             yield return null;
         }
-        Debug.Log("content2:" + www.text);
+        Debug.Log("Content Review: \n" + www.text);
         File.WriteAllText(Application.persistentDataPath + "/" + fileName, www.text, Encoding.GetEncoding("utf-8"));
         LoadFile(Application.persistentDataPath, fileName);
         CompleteAction();
@@ -112,26 +133,26 @@ public class ActionEvent : MonoBehaviour
         return m_ArrayData[row][col];
     }
 
-    public bool IsFinished()
-    {
-        return m_isLoaded && m_currentIndex == m_ArrayData.Length;
-    }
 
-    public void Update()
+
+    private bool IsRunning()
     {
-        if (!m_isLoaded)
+        if (m_countDown > 0)
         {
-            return;
-        }
-        if (IsFinished())
-        {
-            return;
+            m_countDown -= Time.deltaTime;
+            return true;
         }
         else
         {
-            PlayStoryByLine(m_currentIndex);
-            m_currentIndex++;
+            return false;
         }
+    }
+
+    private void InterRuningState(float countDown)
+    {
+        Assert.IsTrue(countDown > 0);
+        Assert.IsTrue(m_countDown < 0);
+        m_countDown = countDown;
     }
 
     private void PlayStoryByLine(int m_currentIndex)
@@ -156,7 +177,8 @@ public class ActionEvent : MonoBehaviour
                     Assert.IsNotNull(controller);
                     if (controller)
                     {
-                        controller.MoveToActionPoint(locationGO);
+                        float durationTime = controller.MoveToActionPoint(locationGO);
+                        InterRuningState(durationTime);
                     }
                 }
 
@@ -172,50 +194,14 @@ public class ActionEvent : MonoBehaviour
                 break;
             case "talk":
                 {
-                    Assert.IsTrue(command.Length > 3);
-
-                    GameRuntimeSetting.ELanguage language = GameRuntimeSetting.Instance().GetCurrentLanguage();
-
-                    string who = "";
-                    string saySomething = "";
-                    for (int i = 1; i < command.Length; i++)
-                    {
-                        switch (language)
-                        {
-                            case GameRuntimeSetting.ELanguage.Chinese:
-                                {
-                                    if (command[i] == "cn")
-                                    {
-                                        who = command[i + 1];
-                                        saySomething = command[i + 2];
-                                    }
-                                }
-                                break;
-                            case GameRuntimeSetting.ELanguage.Japanese:
-                                {
-                                    if (command[i] == "jp")
-                                    {
-                                        who = command[i + 1];
-                                        saySomething = command[i + 2];
-                                    }
-                                }
-                                break;
-                            default:
-                                break;
-                        }
-                    }
-
-                    Assert.IsTrue(who.Length > 0);
-                    Assert.IsTrue(saySomething.Length > 0);
-                    string content = $"{who}: {saySomething}";
-                    float delayTime = saySomething.Length * 0.5f + 2f;
-                    StarPlatinum.EventManager.EventManager.Instance.SendEvent(new TalkEvent { m_content = content, m_delayTime = delayTime });
+                    TalkExecute(command);
                 }
 
                 break;
             case "talkKey":
+            case "talkkey":
                 {
-                    Assert.IsTrue(command.Length > 3);
+                    TalkExecute(command, true);
                 }
 
                 break;
@@ -223,4 +209,57 @@ public class ActionEvent : MonoBehaviour
                 break;
         }
     }
+
+    private void TalkExecute(string[] command, bool isKeyTalk = false)
+    {
+        Assert.IsTrue(command.Length > 3);
+
+        GameRuntimeSetting.ELanguage language = GameRuntimeSetting.Instance().GetCurrentLanguage();
+
+        string who = "";
+        string saySomething = "";
+        for (int i = 1; i < command.Length; i++)
+        {
+            switch (language)
+            {
+                case GameRuntimeSetting.ELanguage.Chinese:
+                    {
+                        if (command[i] == "cn")
+                        {
+                            who = command[i + 1];
+                            saySomething = command[i + 2];
+                        }
+                    }
+                    break;
+                case GameRuntimeSetting.ELanguage.Japanese:
+                    {
+                        if (command[i] == "jp")
+                        {
+                            who = command[i + 1];
+                            saySomething = command[i + 2];
+                        }
+                    }
+                    break;
+                default:
+                    break;
+            }
+        }
+
+        Assert.IsTrue(who.Length > 0);
+        Assert.IsTrue(saySomething.Length > 0);
+
+        float delayTime = saySomething.Length * 0.5f + 2f;
+        StarPlatinum.EventManager.EventManager.Instance.SendEvent(new TalkEvent { m_who = who, m_content = saySomething, m_delayTime = delayTime, m_isKeyTalk = isKeyTalk });
+        InterRuningState(delayTime);
+    }
+
+    [SerializeField]
+    private string m_fileName;
+
+    private bool m_isLoaded = false;
+    private int m_currentIndex = 0;
+    private string[][] m_ArrayData;
+
+    [SerializeField]
+    private float m_countDown = -1;
 }
