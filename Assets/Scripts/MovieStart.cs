@@ -13,7 +13,7 @@ public class MovieStart : MonoBehaviour
 	{
 
 		videoPlayer = GetComponent<VideoPlayer> ();
-		Debug.Log ("player");
+		//Debug.Log ("player");
 
 		// Play on awake defaults to true. Set it to false to avoid the url set
 		// below to auto-start playback since we're in Start().

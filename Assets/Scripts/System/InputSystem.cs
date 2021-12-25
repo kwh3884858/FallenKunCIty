@@ -34,9 +34,11 @@ public class InputSystem : MonoBehaviour {
         m_skillController = GameObject.FindGameObjectWithTag("Player").GetComponent<SkillController>();
         inputSystem = this;
         js = GameObject.FindObjectOfType<JoyStick>();
-        js.OnJoyStickTouchBegin += OnJoyStickBegin;
-        js.OnJoyStickTouchMove += OnJoyStickMove;
-        js.OnJoyStickTouchEnd += OnJoyStickEnd;
+		if (js) {
+            js.OnJoyStickTouchBegin += OnJoyStickBegin;
+            js.OnJoyStickTouchMove += OnJoyStickMove;
+            js.OnJoyStickTouchEnd += OnJoyStickEnd;
+        }
     }
 
     public static InputSystem getInstance()

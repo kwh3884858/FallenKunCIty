@@ -18,6 +18,7 @@ namespace Skylight
 			AddGameObject<PollerService> ();
 			AddGameObject<SceneManager> ();
 			AddGameObject<SoundService> (); 			AddGameObject<UIManager> ();
+			AddGameObject<GameRuntimeSetting> ();
 
 			LogicManager.Instance ().LogicStart ((int)SkylightStaticData.LogicType.PanelStart);
 		}

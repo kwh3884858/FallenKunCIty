@@ -64,7 +64,7 @@ namespace Skylight
 
 		public void Notify (int eventId, LogicData vars = null)
 		{
-			Debug.Log ((SkylightStaticData.LogicType)eventId);
+			//Debug.Log ((SkylightStaticData.LogicType)eventId);
 			m_currentLogic.Notify (eventId, vars);
 			m_currentLogic.DoEvent (eventId, vars);
 		}

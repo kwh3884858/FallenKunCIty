@@ -28,7 +28,7 @@ public class PlayerSlidState : PlayerState
         {
             InputSystem.getInstance().StopControl(false);
             m_Animator.ChangeAnimation(AnimatorControl.AnimationType.Run);
-            m_StateManager.SetTransition(Transition.eTransiton_Object_Run);
+            m_StateManager.SetTransition(Transition.eTransition_Object_Run);
 
         }
     }

@@ -50,7 +50,6 @@ public class PlayerIdleState : PlayerState {
                 m_Animator.ChangeAnimation(AnimatorControl.AnimationType.LayDown);
             }
         }
-        
     }
 
     public override void ProcessTransition()
@@ -65,12 +64,12 @@ public class PlayerIdleState : PlayerState {
             {
                 m_Animator.ChangeAnimation(AnimatorControl.AnimationType.JumpUp);
             }
-            m_StateManager.SetTransition(Transition.eTransiton_Object_Jump);
+            m_StateManager.SetTransition(Transition.eTransition_Object_Jump);
         }
 
         if (Mathf.Abs(InputSystem.getInstance().axis.x) > 0.03f)
         {
-            m_StateManager.SetTransition(Transition.eTransiton_Object_Run);
+            m_StateManager.SetTransition(Transition.eTransition_Object_Run);
         }
         if (m_Player.IsPushing())
         {

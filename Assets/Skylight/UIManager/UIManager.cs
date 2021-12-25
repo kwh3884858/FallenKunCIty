@@ -133,7 +133,7 @@ namespace Skylight
 		public T ShowPanel<T> (Dictionary<string, object> varList = null) where T : UIPanel
 		{
 			string name = typeof (T).ToString ();
-			Debug.Log (name);
+			//Debug.Log (name);
 			Transform panelTran = m_panel.transform.Find (name);
 			GameObject uiObject;
 			T panel = null;
