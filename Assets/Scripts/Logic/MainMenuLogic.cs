@@ -10,7 +10,7 @@ public class MainMenuLogic : LogicBase
 	{
 		switch (eventId) {
 		case (int)SkylightStaticData.LogicType.PanelStart:
-			UIManager.Instance ().ShowPanel<MainMenu> ();
+			UIManager.Instance ().ShowPanel<GhostCatMainMenu> ();
 
 			break;
 		}

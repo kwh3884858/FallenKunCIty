@@ -51,7 +51,7 @@ public class MovieStart : MonoBehaviour
 
 	void EndReached (UnityEngine.Video.VideoPlayer vp = null)
 	{
-		GameObject.Find ("MainMenu/BlackMask").SetActive (false);
+		GameObject.Find ("GhostCatMainMenu/BlackMask").SetActive (false);
 		SoundService.Instance().PlayMusic("MainMenuBgm", true);
 
 		gameObject.SetActive (false);
