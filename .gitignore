@@ -9,8 +9,8 @@
 .svn/
 Documents/
 
-Assets/StreamingAssets
-Assets/StreamingAssets.meta
+Assets/StreamingAssets/AssetBundle
+Assets/StreamingAssets/AssetBundle.meta
 Assembly-CSharp*
 *.sln
 

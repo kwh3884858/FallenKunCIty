@@ -148,7 +148,9 @@ public class StoryManager : MonoSingleton<StoryManager>
         return m_location [location];
 	}
 
+    [SerializeField]
     StoryTrack m_track1;
+    [SerializeField]
     StoryTrack m_track2;
 
     private Dictionary<EActor, GameObject> m_actors;

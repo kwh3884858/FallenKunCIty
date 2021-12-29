@@ -1,0 +1,5 @@
+talk,cn,老师,我去关一下窗户
+move,teacher,window
+talk,cn,老师,来桌前我们继续谈谈吧
+talkKey,cn,老师,有关于你的事情
+move,teacher,desk
