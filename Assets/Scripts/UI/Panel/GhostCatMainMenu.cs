@@ -44,6 +44,9 @@ public class GhostCatMainMenu : UIPanel
         {
             case SceneLookupEnum.GameRoot:
                 break;
+			case SceneLookupEnum.GhostCatMain:
+				SceneManager.Instance().ShowScene<GhostCatMain>();
+				break;
             case SceneLookupEnum.LegoGameDesignerGym:
 				SceneManager.Instance().ShowScene<LegoGameDesignerGym>();
 				break;

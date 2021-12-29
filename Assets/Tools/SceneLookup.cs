@@ -14,25 +14,28 @@ using UnityEngine.Assertions;
 public enum SceneLookupEnum
 {
 GameRoot = 0,
-LegoGameDesignerGym = 1,
-LegoGhostCat = 2,
-SampleScene = 3,
-SceneCave = 4
+GhostCatMain = 1,
+LegoGameDesignerGym = 2,
+LegoGhostCat = 3,
+SampleScene = 4,
+SceneCave = 5
 }
 
 public static class SceneLookup {
 
 public const int GameRoot = 0;
-public const int LegoGameDesignerGym = 1;
-public const int LegoGhostCat = 2;
-public const int SampleScene = 3;
-public const int SceneCave = 4;
+public const int GhostCatMain = 1;
+public const int LegoGameDesignerGym = 2;
+public const int LegoGhostCat = 3;
+public const int SampleScene = 4;
+public const int SceneCave = 5;
 
 
-    private const int TotalComponents = 5;
+    private const int TotalComponents = 6;
 
     private static readonly string[] m_sceneLists = {
 "GameRoot",
+"GhostCatMain",
 "LegoGameDesignerGym",
 "LegoGhostCat",
 "SampleScene",
