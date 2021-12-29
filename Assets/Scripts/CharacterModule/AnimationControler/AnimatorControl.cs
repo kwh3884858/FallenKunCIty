@@ -46,12 +46,14 @@ public class AnimatorControl : MonoBehaviour
 	{
 		switch (m_CurrentType) {
 		case AnimationType.JumpDown:
-			m_Animator.SetBool ("JumpDown", false);
-			break;
+                m_Animator.SetBool("JumpDown", false);
+                m_Animator.SetBool("CatJump", false);
+                break;
 		case AnimationType.JumpUp:
-			m_Animator.SetBool ("JumpUp", false);
-			break;
-		case AnimationType.Sliding:
+				m_Animator.SetBool("JumpUp", false);
+                m_Animator.SetBool("CatJump", false);
+                break;
+        case AnimationType.Sliding:
 			m_Animator.SetBool ("Sliding", false);
 			break;
 		case AnimationType.PushIdle:
@@ -79,13 +81,16 @@ public class AnimatorControl : MonoBehaviour
 			break;
 		case AnimationType.JumpUp:
 			m_Animator.SetBool ("JumpUp", true);
-			break;
+                m_Animator.SetBool("CatJump", true);
+                break;
 		case AnimationType.JumpDown:
 			m_Animator.SetBool ("JumpDown", true);
-			break;
+                m_Animator.SetBool("CatJump", true);
+                break;
 		case AnimationType.JumpLand:
 			m_Animator.SetTrigger ("JumpLand");
-			break;
+                m_Animator.SetBool("CatJump", false);
+                break;
 		case AnimationType.DoubleJump:
 			m_Animator.SetTrigger ("DoubleJump");
 			break;
