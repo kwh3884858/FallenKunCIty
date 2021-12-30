@@ -162,6 +162,7 @@ public class ActionEvent : MonoBehaviour
         switch (command[0])
         {
             case "move":
+            case "Move":
                 {
                     Assert.IsTrue(command.Length == 3);
                     string who = command[1];
@@ -184,15 +185,24 @@ public class ActionEvent : MonoBehaviour
 
                 break;
             case "interact":
+            case "Interact":
                 {
                     Assert.IsTrue(command.Length == 3);
 
                     string who = command[1];
                     string what = command[2];
+
+                    EActor actor = GetActorByName(who);
+                    ELocation location = GetLocationByName(what);
+                    GameObject actorGO = StoryManager.Instance().GetActorGameobjectByEActor(actor);
+                    GameObject locationGO = StoryManager.Instance().GetLocationGameobjectByELocation(location);
+
+                    
                 }
 
                 break;
             case "talk":
+            case "Talk":
                 {
                     TalkExecute(command);
                 }
@@ -200,6 +210,8 @@ public class ActionEvent : MonoBehaviour
                 break;
             case "talkKey":
             case "talkkey":
+            case "TalkKey":
+            case "Talkkey":
                 {
                     TalkExecute(command, true);
                 }
