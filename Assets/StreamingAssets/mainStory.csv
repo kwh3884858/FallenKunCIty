@@ -1,4 +1,12 @@
-talk,cn,老师,我去关一下窗户
+talk,cn,藤田老师,创太，来这边
+talk,jp,藤田先生,創太くん、こっちこっち
+talk,cn,藤田老师,最近怎么样？
+talk,jp,藤田先生,最近はどう？
+talk,cn,藤田老师,在班里有交到好朋友吗
+talk,jp,藤田先生,クラスメートと仲良くになったか？
+
+talk,jp,藤田先生,創太はいい子から、きっと大丈夫だよ
+
 move,teacher,window
 talk,cn,老师,来桌前我们继续谈谈吧
 talkKey,cn,老师,有关于你的事情
