@@ -9,11 +9,15 @@ public class NPCController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        // Moving
         if (m_currentActionPoint && !m_isMoveing)
         {
             m_isMoveing = true;
             float duration = GetDurationTime(m_currentActionPoint);
             transform.DOMoveX(m_currentActionPoint.transform.position.x, duration).OnComplete(OnMoveComplete);
+
+            //Animation Start
+
         }
     }
 
@@ -21,6 +25,9 @@ public class NPCController : MonoBehaviour
     {
         m_isMoveing = false;
         m_currentActionPoint = null;
+
+        //Animation End
+
     }
 
     private float GetDurationTime(GameObject destination)

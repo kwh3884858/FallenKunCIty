@@ -92,8 +92,12 @@ public class StoryManager : MonoSingleton<StoryManager>
         Assert.IsTrue (m_desk != null);
         Assert.IsTrue (m_chair != null);
         Assert.IsTrue (m_window != null);
-        Assert.IsTrue(m_windowsAnimator != null);
-        Assert.IsTrue(m_paperAnimator != null);
+        Assert.IsTrue(m_paper != null);
+        Assert.IsTrue(m_windows != null);
+        Assert.IsTrue(m_phone != null);
+        Assert.IsTrue(m_paper.GetComponent<Interaction>() != null);
+        Assert.IsTrue(m_windows.GetComponent<Interaction>() != null);
+        Assert.IsTrue(m_phone.GetComponent<Interaction>() != null);
 
         m_actors = new Dictionary<EActor, GameObject>();
         m_actors.Add(EActor.Teacher, m_teacher);
@@ -105,8 +109,9 @@ public class StoryManager : MonoSingleton<StoryManager>
         m_location.Add(ELocation.Window, m_window);
 
         m_interactions = new Dictionary<EInteraction, GameObject>();
-        m_interactions.Add(EInteraction.Paper, m_paperAnimator);
-        m_interactions.Add(EInteraction.Window, m_windowsAnimator);
+        m_interactions.Add(EInteraction.Paper, m_paper);
+        m_interactions.Add(EInteraction.Window, m_windows);
+        m_interactions.Add(EInteraction.Phone, m_phone);
 
         m_track1 = new StoryTrack();
         m_track2 = new StoryTrack();
@@ -162,6 +167,11 @@ public class StoryManager : MonoSingleton<StoryManager>
         return m_location [location];
 	}
 
+    public GameObject GetINteractionGameobjectByEInteraction(EInteraction interaction)
+    {
+        return m_interactions[interaction];
+    }
+
     [SerializeField]
     StoryTrack m_track1;
     [SerializeField]
@@ -180,8 +190,9 @@ public class StoryManager : MonoSingleton<StoryManager>
     public GameObject m_chair;
     public GameObject m_window;
     [Header("Interaction")]
-    public GameObject m_paperAnimator;
-    public GameObject m_windowsAnimator;
+    public GameObject m_paper;
+    public GameObject m_windows;
+    public GameObject m_phone;
     [Header("Story")]
     public float m_delayPerWord = 0.5f;
 

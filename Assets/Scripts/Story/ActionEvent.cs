@@ -89,6 +89,22 @@ public class ActionEvent : MonoBehaviour
         return ELocation.Null;
     }
 
+    private EInteraction GetInteractionByName(string name)
+    {
+        switch (name)
+        {
+            case "paper":
+                return EInteraction.Paper;
+            case "window":
+                return EInteraction.Window;
+            case "phone":
+                return EInteraction.Phone;
+            default:
+                Assert.IsTrue(false);
+                break;
+        }
+        return EInteraction.Null;
+    }
     private IEnumerator LoadCSV(string fileName, UnityAction CompleteAction)
     {
         string sPath = Application.streamingAssetsPath + "/" + fileName;
@@ -132,8 +148,6 @@ public class ActionEvent : MonoBehaviour
     {
         return m_ArrayData[row][col];
     }
-
-
 
     private bool IsRunning()
     {
@@ -193,11 +207,13 @@ public class ActionEvent : MonoBehaviour
                     string what = command[2];
 
                     EActor actor = GetActorByName(who);
-                    ELocation location = GetLocationByName(what);
+                    EInteraction location = GetInteractionByName(what);
                     GameObject actorGO = StoryManager.Instance().GetActorGameobjectByEActor(actor);
-                    GameObject locationGO = StoryManager.Instance().GetLocationGameobjectByELocation(location);
+                    GameObject locationGO = StoryManager.Instance().GetINteractionGameobjectByEInteraction(location);
 
-                    
+                    // TODO: Play actor animation.
+                    locationGO.GetComponent<Interaction>().PlayAnimation();
+
                 }
 
                 break;
