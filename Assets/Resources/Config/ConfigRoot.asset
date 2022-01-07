@@ -12,4 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 21af54f42a9db0b41866c089594d7207, type: 3}
   m_Name: ConfigRoot
   m_EditorClassIdentifier: 
-  StartScene: 0
+  StartScene: 1

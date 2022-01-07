@@ -21,7 +21,7 @@ public class CameraController : MonoBehaviour
 	}
 	void Start ()
 	{
-		player = GameObject.Find ("Character").transform;
+		player = GameObject.Find ("Cat").transform;
 	}
 	bool CheckXMargin ()
 	{
