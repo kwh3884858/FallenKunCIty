@@ -5,11 +5,16 @@ using UnityEngine;
 using UnityEngine.Video;
 public class MovieStart : MonoBehaviour
 {
+    private void Start()
+    {
+        if (m_playOnStart)
+        {
+			Play();
+		}
+    }
 
-
-	VideoPlayer videoPlayer;
-	// Use this for initialization
-	void Start ()
+    // Use this for initialization
+    void Play ()
 	{
 
 		videoPlayer = GetComponent<VideoPlayer> ();
@@ -34,7 +39,6 @@ public class MovieStart : MonoBehaviour
 		// Each time we reach the end, we slow down the playback by a factor of 10.
 		videoPlayer.loopPointReached += EndReached;
 
-
 		videoPlayer.Play ();
 	}
 
@@ -52,8 +56,12 @@ public class MovieStart : MonoBehaviour
 	void EndReached (UnityEngine.Video.VideoPlayer vp = null)
 	{
 		GameObject.Find ("GhostCatMainMenu/BlackMask").SetActive (false);
-		SoundService.Instance().PlayMusic("MainMenuBgm", true);
+		SoundService.Instance().PlayMusic(m_bgmName, true);
 
 		gameObject.SetActive (false);
 	}
+
+	public string m_bgmName;
+	public bool m_playOnStart;
+    VideoPlayer videoPlayer;
 }
