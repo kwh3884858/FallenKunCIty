@@ -32,5 +32,5 @@ public class GameRuntimeSetting : GameModule<GameRuntimeSetting>
         Chinese,
         Japanese,
 	}
-    private ELanguage m_language = ELanguage.Chinese;
+    private ELanguage m_language = ELanguage.Japanese;
 }

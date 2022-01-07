@@ -57,7 +57,7 @@ namespace StarPlatinum.Base
             else
             {
                 m_isLoading = true;
-                string perfbName = "Config/" + typeof(T).ToString();
+                string perfbName = "Config/" + typeof(T).Name;
                 m_instance = AssetsManager.Load<T>(perfbName);
                 Debug.Log($"===========Resource加载完成:{typeof(T).Name}, path:{perfbName}, config:{m_instance}=====");
                 m_isLoading = false;
