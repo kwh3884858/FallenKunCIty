@@ -128,31 +128,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 2098317253478492402, guid: c67de4380c69f1242873be525a4b1e7d,
-        type: 3}
-      propertyPath: m_LocalPosition.y
-      value: -1.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 3798628744761057540, guid: c67de4380c69f1242873be525a4b1e7d,
-        type: 3}
-      propertyPath: m_LocalPosition.y
-      value: -1.2800062
-      objectReference: {fileID: 0}
-    - target: {fileID: 3798628745182646562, guid: c67de4380c69f1242873be525a4b1e7d,
-        type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -0.025
-      objectReference: {fileID: 0}
-    - target: {fileID: 3798628745182646562, guid: c67de4380c69f1242873be525a4b1e7d,
-        type: 3}
-      propertyPath: m_LocalPosition.y
-      value: -5.69
-      objectReference: {fileID: 0}
-    - target: {fileID: 3798628745182646562, guid: c67de4380c69f1242873be525a4b1e7d,
-        type: 3}
-      propertyPath: m_LocalScale.x
-      value: 46.44333
-      objectReference: {fileID: 0}
     - target: {fileID: 4996050564269807693, guid: c67de4380c69f1242873be525a4b1e7d,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -212,11 +187,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: GhostCatMain
-      objectReference: {fileID: 0}
-    - target: {fileID: 7087009152112498613, guid: c67de4380c69f1242873be525a4b1e7d,
-        type: 3}
-      propertyPath: m_LocalPosition.y
-      value: -1.670006
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c67de4380c69f1242873be525a4b1e7d, type: 3}
