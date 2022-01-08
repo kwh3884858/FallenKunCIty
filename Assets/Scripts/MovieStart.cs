@@ -63,8 +63,8 @@ public class MovieStart : MonoBehaviour
 	{
         vp.loopPointReached -= EndReached;
         if(m_backMask) m_backMask.SetActive (false);
-		SoundService.Instance().PlayMusic(m_bgmName, true);
-
+        if (m_bgmName.Length > 0) SoundService.Instance().PlayMusic(m_bgmName, true);
+       
 		gameObject.SetActive (false);
 	}
 

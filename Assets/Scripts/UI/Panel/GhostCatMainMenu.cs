@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Skylight;
 using Config.GameRoot;
+using System;
 
 public class GhostCatMainMenu : UIPanel
 {
@@ -10,6 +11,7 @@ public class GhostCatMainMenu : UIPanel
 	{
 		base.PanelInit();
 		AddButtonClick("GameStart", GameStart);
+		AddButtonClick("Setting", OnSetting);
 		AddButtonClick("About", GameAbout);
 		AddButtonClick("Quit", GameQuit);
 		LogicManager.Instance().Notify((int)SkylightStaticData.LogicType.MainMenuInit);
@@ -19,7 +21,7 @@ public class GhostCatMainMenu : UIPanel
 		EventTriggerListener.Get(transform.Find("Quit")).OnPreHover(1.2f);
 	}
 
-	public override void PanelOpen()
+    public override void PanelOpen()
 	{
 		base.PanelOpen();
 		LogicManager.Instance().Notify((int)SkylightStaticData.LogicType.MainMenuOpen);
@@ -35,10 +37,15 @@ public class GhostCatMainMenu : UIPanel
 	void GameStart()
 	{
 		SoundService.Instance().StopMusic();
+		SoundService.Instance().PlayMusic("GhostCatGameBgm", true);
 		GameObject.Find("GhostCatMainMenu/GameStartMovie").GetComponent<MovieStart>().Play(EndReached);
 	}
+    private void OnSetting()
+    {
+		UIManager.Instance().ShowPanel<ConfigPanel>();
+	}
 
-	void GameAbout()
+    void GameAbout()
 	{
 		UIManager.Instance().ShowPanel<UIGameInfoPanel>();
 	}
