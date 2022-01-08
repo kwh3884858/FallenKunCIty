@@ -29,9 +29,12 @@ public class SkylightStaticData : MonoBehaviour
 		DialogPlayerStart,
 		DialogPlayerCallback,
 
-	}
+		InteractionIconShow,
+        InteractionIconExit,
 
-	public enum PollerType
+    }
+
+    public enum PollerType
 	{
 		CheeckCharacterEnter,
 		CheeckCharacterExit,

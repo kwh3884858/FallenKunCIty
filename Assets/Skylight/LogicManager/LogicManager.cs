@@ -77,7 +77,7 @@ namespace Skylight
 		public class LogicData
 		{
 			public string m_name;
-
+			public Vector2 m_uiScreenPosition;
 		}
 	}
 

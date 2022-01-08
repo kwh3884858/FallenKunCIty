@@ -5,13 +5,12 @@ using UnityEngine;
 
 public class GhostCatMain : BaseScene
 {
-    public override void SceneInit()
-    {
-    }
 
     public override void SceneShow()
     {
+        base.SceneShow();
         UIManager.Instance().ShowPanel<UISubtitilePanel>();
+        UIManager.Instance().ShowPanel<GhostCatHUD>();
 
         StoryManager.Instance().Init();
         StoryManager.Instance().AddAction(StoryManager.ETrackType.Track1, "mainStory.csv");
@@ -19,8 +18,8 @@ public class GhostCatMain : BaseScene
     }
     public override void SceneClose()
     {
+        base.SceneClose();
         UIManager.Instance().ClosePanel<UISubtitilePanel>();
-
     }
 }
 

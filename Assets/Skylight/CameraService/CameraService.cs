@@ -20,6 +20,8 @@ namespace Skylight
 
 		}
 
+		public GameObject GetMainCamera() { return m_mainCamera;  }
+
 		public GameObject GetCamera ()
 		{
 
