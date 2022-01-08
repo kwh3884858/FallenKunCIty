@@ -8,9 +8,6 @@ using System.IO;
 
 namespace Skylight
 {
-	// 此类只用来编写逻辑和数据，不用来操作非Logic的代码。
-	// 需要和外部交互的话，需要生成事件交给外部来自己注册感兴趣的事件
-	// 这边暂时使用 MonoBehaviour 方便调试 后续会把他删除掉的
 	public class LogicBase : MonoBehaviour
 	{
 		public delegate bool LogicEventHandler (LogicManager.LogicData vars = null);

@@ -77,10 +77,10 @@ public class InputSystem : MonoBehaviour {
             axis = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
             jump = Input.GetButtonDown("Jump");
 
-            if (m_skillController.GetSkills().Contains(SkillType.Water))
-            {
-                water = Input.GetButtonDown("Fire1");
-            }
+            //if (m_skillController.GetSkills().Contains(SkillType.Water))
+            //{
+            //    water = Input.GetButtonDown("Fire1");
+            //}
             if (Input.GetButtonDown("Fire2"))
             {
                 hand = true;
