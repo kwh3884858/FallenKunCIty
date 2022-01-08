@@ -411,8 +411,8 @@ Transform:
   - {fileID: 3223297196463843112}
   - {fileID: 6281026866674509607}
   - {fileID: 299906171065192014}
-  - {fileID: 3726975543273824058}
   - {fileID: 5520419545519036765}
+  - {fileID: 3726975543273824058}
   - {fileID: 8958530288410722770}
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -638,32 +638,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 4996050564269807693}
     m_Modifications:
-    - target: {fileID: 2881114638221683986, guid: 37c301e13115fbb4ca21765408e2befc,
-        type: 3}
-      propertyPath: m_Offset.x
-      value: -0.016391754
-      objectReference: {fileID: 0}
-    - target: {fileID: 2881114638221683986, guid: 37c301e13115fbb4ca21765408e2befc,
-        type: 3}
-      propertyPath: m_Size.x
-      value: 1.9872055
-      objectReference: {fileID: 0}
-    - target: {fileID: 2881114638221683986, guid: 37c301e13115fbb4ca21765408e2befc,
-        type: 3}
-      propertyPath: m_Offset.y
-      value: -1.5580807
-      objectReference: {fileID: 0}
-    - target: {fileID: 2881114638221683986, guid: 37c301e13115fbb4ca21765408e2befc,
-        type: 3}
-      propertyPath: m_Size.y
-      value: 1.93783
-      objectReference: {fileID: 0}
-    - target: {fileID: 5437260193598742590, guid: 37c301e13115fbb4ca21765408e2befc,
-        type: 3}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: 21300000, guid: a9fcb3d78f050ce46b79d82036c9c4ce,
-        type: 3}
     - target: {fileID: 5810824204226262188, guid: 37c301e13115fbb4ca21765408e2befc,
         type: 3}
       propertyPath: m_Name
@@ -864,7 +838,7 @@ PrefabInstance:
     - target: {fileID: 277029653677442842, guid: f04ce5b270bfb6045acf57527a2c41ec,
         type: 3}
       propertyPath: m_RootOrder
-      value: 10
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 277029653677442842, guid: f04ce5b270bfb6045acf57527a2c41ec,
         type: 3}
@@ -885,16 +859,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Background
-      objectReference: {fileID: 0}
-    - target: {fileID: 6743665472776024201, guid: f04ce5b270bfb6045acf57527a2c41ec,
-        type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 20.32
-      objectReference: {fileID: 0}
-    - target: {fileID: 6743665472776024201, guid: f04ce5b270bfb6045acf57527a2c41ec,
-        type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0.68273574
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f04ce5b270bfb6045acf57527a2c41ec, type: 3}
@@ -1116,7 +1080,7 @@ PrefabInstance:
     - target: {fileID: 6664844108137282845, guid: 085f2e7b039dadd48b3e846ddbbc217e,
         type: 3}
       propertyPath: m_RootOrder
-      value: 9
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 6664844108137282845, guid: 085f2e7b039dadd48b3e846ddbbc217e,
         type: 3}
