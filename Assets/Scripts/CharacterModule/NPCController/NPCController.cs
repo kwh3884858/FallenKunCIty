@@ -16,8 +16,16 @@ public class NPCController : MonoBehaviour
             float duration = GetDurationTime(m_currentActionPoint);
             transform.DOMoveX(m_currentActionPoint.transform.position.x, duration).OnComplete(OnMoveComplete);
 
+            if (m_currentActionPoint.transform.position.x - transform.position.x > 0)
+            {
+                m_spriteRender.flipX = true;
+            }
+            else
+            {
+                m_spriteRender.flipX = false;
+            }
             //Animation Start
-
+            m_animator.SetBool("IsMove", true);
         }
     }
 
@@ -27,7 +35,7 @@ public class NPCController : MonoBehaviour
         m_currentActionPoint = null;
 
         //Animation End
-
+        m_animator.SetBool("IsMove", false);
     }
 
     private float GetDurationTime(GameObject destination)
@@ -56,4 +64,7 @@ public class NPCController : MonoBehaviour
     private bool m_isMoveing = false;
     [SerializeField]
     private GameObject m_currentActionPoint;
+
+    public SpriteRenderer m_spriteRender;
+    public Animator m_animator;
 }
